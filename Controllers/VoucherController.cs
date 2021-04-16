@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Dapper;
 using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
 using SmartMeal.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,40 +11,44 @@ namespace SmartMeal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class VoucherController : ControllerBase
     {
-        public DbConnector dbConnector = new DbConnector(); 
-        // GET: api/<CustomerController>
+        public DbConnector dbConnector = new DbConnector();
+
+        // GET: api/<VoucherController>
         [HttpGet]
         public IActionResult Get()
         {
-            List<Customer> customer = new List<Customer>();
 
+            return Ok(dbConnector.GetAllData<Voucher>());
 
-            return Ok(dbConnector.GetAllData<Customer>());
-            //return customer;
         }
 
-        // GET api/<CustomerController>/5
+        // GET api/<VoucherController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(string id)
         {
-            return "value";
+            return Ok(dbConnector.GetBy<Voucher>("VoucherId", id));
         }
 
-        // POST api/<CustomerController>
+
+        // POST api/<VoucherController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Voucher voucher)
         {
+            int affect = dbConnector.Insert<Voucher>(voucher);
+            return Ok(affect);
+
+
         }
 
-        // PUT api/<CustomerController>/5
+        // PUT api/<VoucherController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<CustomerController>/5
+        // DELETE api/<VoucherController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

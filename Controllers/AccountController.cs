@@ -20,7 +20,7 @@ namespace SmartMeal.Controllers
         {
             
             return Ok(dbConnector.GetAllData<Account>());
-            //return customer;
+            
         }
 
 
@@ -50,9 +50,10 @@ namespace SmartMeal.Controllers
         {
             bool affect = dbConnector.CheckLogin(account.Username,account.Password);
             return Ok(affect);
-
-
         }
+
+
+
 
         // PUT api/<ValuesController>/5
         [HttpPut("{id}")]
