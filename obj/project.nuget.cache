@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XaGMWVS34Et2nn6QFMxQhWtLi4lb4LtlsLPzUtuu8KeeL74qLGFm7Rfx79l4mHBMMt5Z0KExP08BCvbkUxYx7A==",
+  "dgSpecHash": "pHeaHOD1k5VKZxFzkKRReZGL8UhqtfuBuT2JskMq6h7s9eUpzv8vtogODGCXvDd9NXxZyHM0Hs+dAli+R8XG3g==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\source\\repos\\SmartMeal\\SmartMeal.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",

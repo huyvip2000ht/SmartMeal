@@ -168,3 +168,4 @@ C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\Ubiety.Dns.Core.dll
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\Zstandard.Net.dll
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\Renci.SshNet.dll
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\SshNet.Security.Cryptography.dll
+C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\BCrypt.Net-Next.dll

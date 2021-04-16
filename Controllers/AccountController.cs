@@ -40,10 +40,10 @@ namespace SmartMeal.Controllers
         [HttpPost]
         public IActionResult Post(Account account)
         {
+            account.Password = BCrypt.Net.BCrypt.HashPassword(account.Password);
+
             int affect = dbConnector.Insert<Account>(account);
             return Ok(affect);
-            
-            
         }
         [HttpPost("login")]
         public IActionResult PostLogin(Account account)
