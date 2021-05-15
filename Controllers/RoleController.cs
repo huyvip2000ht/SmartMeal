@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SmartMeal.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,20 +13,24 @@ namespace SmartMeal.Controllers
     [ApiController]
     public class RoleController : ControllerBase
     {
+        public DbConnector dbConnector = new DbConnector();
+
         // GET: api/<RoleController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Post(Dish dish)
         {
-            return new string[] { "value1", "value2" };
+            int affect = dbConnector.Insert<Dish>(dish);
+            return Ok(affect);
+
+
         }
 
         // GET api/<RoleController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(string id)
         {
-            return "value";
+            return Ok(dbConnector.GetBy<Payment>("PaymentId", id));
         }
-
         // POST api/<RoleController>
         [HttpPost]
         public void Post([FromBody] string value)

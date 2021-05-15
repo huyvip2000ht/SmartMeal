@@ -50,7 +50,10 @@ namespace SmartMeal
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseEndpoints(endpoints =>
+            {
+              //  endpoints.MapHub<ChatHub>("/chathub");
+            });
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

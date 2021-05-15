@@ -13,6 +13,7 @@ namespace SmartMeal
     {
         
         protected string connectionString = "Host=localhost;port=3307;Character Set=utf8;Database=restaurant;User Id=root;password=''";
+     //   protected string connectionString = "Database=restaurant;port=50154;Data Source=127.0.0.1;User Id=azure;Password=6#vWHD_$";
         protected IDbConnection dbConnection;
         public DbConnector()
         {

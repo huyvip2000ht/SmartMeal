@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SmartMeal.Models;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,13 +36,49 @@ namespace SmartMeal.Controllers
 
         // POST api/<DishController>
         [HttpPost]
-        public IActionResult Post(Dish dish)
+        public IActionResult Post(DishInsert dishInsert)
         {
+            Dish dish = new Dish();
+            dish.DishName = dishInsert.DishName;
+            dish.DishTypeId = dishInsert.DishTypeId;
+            dish.Price = dishInsert.Price;
+            dish.Image = Base64ToImageAndSave(dishInsert.Base64ImageString);
+
+
+
             int affect = dbConnector.Insert<Dish>(dish);
             return Ok(affect);
+           // return Ok(dish);
 
+            //dish.Image = dishInsert......;
+            
+        }
+
+        
+        public String Base64ToImageAndSave(string base64String)
+        {
+            string filePath = Directory.GetCurrentDirectory() + "\\Images\\";
+            string extension = ".jpg";
+            string fileName = Path.ChangeExtension(
+                Path.GetRandomFileName(),
+                extension
+            );
+
+            string imagePath = filePath + fileName;
+
+            string base64StringData = base64String; // Your base 64 string data
+            string cleandata = base64StringData.Replace("data:image/jpeg;base64,", "");
+                    cleandata = cleandata.Replace("data:image/png;base64,", "");
+                    cleandata = cleandata.Replace("data:image/jpg;base64,", "");
+
+            byte[] data = System.Convert.FromBase64String(cleandata);
+            MemoryStream ms = new MemoryStream(data);
+            System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+            img.Save(imagePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return fileName;
 
         }
+     
 
         // PUT api/<DishController>/5
         [HttpPut("{id}")]
