@@ -23,13 +23,15 @@ namespace SmartMeal.Controllers
         }
 
         // GET api/<ImageController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{imageName}")]
+        public IActionResult Get(string imageName)
         {
-            return "value";
+            Byte[] b = System.IO.File.ReadAllBytes(@Directory.GetCurrentDirectory() + "\\Images\\" + imageName);   
+            return File(b, "image/jpg");
+
         }
-        
-        
+
+
         private IHostingEnvironment hostingEnvironment;
 
         // POST api/<ImageController>
