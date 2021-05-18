@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using SmartMeal.Models;
+using SmartMeal.Hubs;
+
 namespace SmartMeal
 {
     public class Startup
@@ -31,6 +33,7 @@ namespace SmartMeal
                                                opt.UseInMemoryDatabase("TodoList"));
 
             services.AddControllers();
+            services.AddSignalR();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SmartMeal", Version = "v1" });
@@ -50,15 +53,13 @@ namespace SmartMeal
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-              //  endpoints.MapHub<ChatHub>("/chathub");
-            });
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<AddFoodHub>("/addFoodHub");
             });
         }
     }

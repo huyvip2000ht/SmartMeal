@@ -55,7 +55,7 @@ namespace SmartMeal.Controllers
         }
 
         
-        public String Base64ToImageAndSave(string base64String)
+        private String Base64ToImageAndSave(string base64String)
         {
             string filePath = Directory.GetCurrentDirectory() + "\\Images\\";
             string extension = ".jpg";
