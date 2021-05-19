@@ -8,10 +8,10 @@ namespace SmartMeal.Hubs
 {
     public class AddFoodHub : Hub
     {
-        public async Task SendNewFood(string foodName, int foodPrice, int dishType, string foodImage)
+        public async Task SendNewFood(string foodName, int foodPrice, int dishType)
         {
-            Console.WriteLine("ReceiveNewFood: " + foodName + foodPrice.ToString() +dishType.ToString() + foodImage);
-            await Clients.All.SendAsync("ReceiveNewFood", foodName, foodPrice, dishType, foodImage);
+            Console.WriteLine("ReceiveNewFood: " + foodName + foodPrice.ToString() +dishType.ToString());
+            await Clients.All.SendAsync("ReceiveNewFood", foodName, foodPrice, dishType);
         }
     }
 }
