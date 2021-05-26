@@ -170,7 +170,6 @@ C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\Renci.SshNet.dll
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\SshNet.Security.Cryptography.dll
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\BCrypt.Net-Next.dll
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\libman.json
-C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\lib\aspnet\signalr\package.json
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\System.Drawing.Common.dll
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\HP\source\repos\SmartMeal\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

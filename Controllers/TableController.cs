@@ -33,8 +33,12 @@ namespace SmartMeal.Controllers
 
         // POST api/<TableController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Table table)
         {
+            int affect = dbConnector.Insert<Table>(table);
+            return Ok(affect);
+
+
         }
 
         // PUT api/<TableController>/5

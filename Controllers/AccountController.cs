@@ -45,6 +45,8 @@ namespace SmartMeal.Controllers
             int affect = dbConnector.Insert<Account>(account);
             return Ok(affect);
         }
+
+
         [HttpPost("login")]
         public IActionResult PostLogin(Account account)
         {

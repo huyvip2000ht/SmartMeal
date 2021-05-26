@@ -33,8 +33,12 @@ namespace SmartMeal.Controllers
 
         // POST api/<PaymentController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Payment payment)
         {
+            int affect = dbConnector.Insert<Payment>(payment);
+            return Ok(affect);
+
+
         }
 
         // PUT api/<PaymentController>/5

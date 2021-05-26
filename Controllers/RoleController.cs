@@ -17,11 +17,10 @@ namespace SmartMeal.Controllers
 
         // GET: api/<RoleController>
         [HttpGet]
-        public IActionResult Post(Dish dish)
+        public IActionResult Get()
         {
-            int affect = dbConnector.Insert<Dish>(dish);
-            return Ok(affect);
 
+            return Ok(dbConnector.GetAllData<Role>());
 
         }
 
@@ -33,8 +32,12 @@ namespace SmartMeal.Controllers
         }
         // POST api/<RoleController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Role role)
         {
+            int affect = dbConnector.Insert<Role>(role);
+            return Ok(affect);
+
+
         }
 
         // PUT api/<RoleController>/5
