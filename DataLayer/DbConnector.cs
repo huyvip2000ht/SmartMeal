@@ -76,7 +76,16 @@ namespace SmartMeal
                 return affects;
             }
 
+        public int Update<TEntity>(string column_value, string value, string column_id,string id ) 
+        {
+            var tableName = typeof(TEntity).Name;
+            var sql = $"UPDATE `{tableName}` SET `{column_value}` = '{value}' WHERE `{tableName}`.`{column_id}` = '{id}';";
 
+
+            int affects = dbConnection.Execute(sql);
+            // var entity = dbConnection.Query<TEntity>(sql);
+            return affects;
+        }
 
 
 
