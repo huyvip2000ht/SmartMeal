@@ -28,8 +28,16 @@ namespace SmartMeal.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
-            return Ok(dbConnector.GetBy<Account>("OrderId", id));
+            return Ok(dbConnector.GetBy<Orders>("orderId", id));
         }
+
+        // GET api/<OrdersController>/table/5
+        [HttpGet("table/{tableid}")]
+        public IActionResult Gettable(string tableid)
+        {
+            return Ok(dbConnector.GetBy<Orders>("tableId", tableid));
+        }
+
 
         // POST api/<OrdersController>
         [HttpPost]

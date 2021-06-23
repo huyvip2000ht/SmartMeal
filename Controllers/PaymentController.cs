@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -31,15 +32,44 @@ namespace SmartMeal.Controllers
             return Ok(dbConnector.GetBy<Payment>("PaymentId", id));
         }
 
-        // POST api/<PaymentController>
-        [HttpPost]
-        public IActionResult Post(Payment payment)
+        [HttpGet("table/{tableId}")]
+        public IActionResult PostPayment(string tableId)
         {
-            int affect = dbConnector.Insert<Payment>(payment);
-            return Ok(affect);
+            var payment = dbConnector.GetPaymentByTableId(tableId);
 
+            return Ok(payment);
 
         }
+
+        // POST api/<PaymentController>
+        [HttpPost("dishes")]
+        public IActionResult Post(string tableId,string voucherId)
+        {
+            
+
+            var dishes = dbConnector.InsertPayment(tableId,voucherId);
+            var payment = dbConnector.GetPaymentByTableId(tableId);
+            var p = new
+            {
+                data = new
+                {
+                    name = "lame",
+                    age = 32
+                }
+            };
+            return p;
+            return Ok(dishes);
+
+        }
+/*        [HttpPost("payment")]
+        public IActionResult PostPayment(string tableId, string voucherId)
+        {
+            var payment = dbConnector.GetPaymentByTableId(tableId);
+
+            return Ok(payment);
+
+        }*/
+
 
         // PUT api/<PaymentController>/5
         [HttpPut("{id}")]

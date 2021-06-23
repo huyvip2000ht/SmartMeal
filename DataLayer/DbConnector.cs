@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -38,6 +39,39 @@ namespace SmartMeal
             var entity = dbConnection.Query<TEntity>(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
             return entity;
         }
+
+        public virtual IEnumerable InsertPayment(string tableId, string voucherId)
+        {
+            //var tableName = "payment";
+            var storeName = $"Proc_MakePayment";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add($"tableId", tableId);
+            dynamicParameters.Add($"voucherId", voucherId);
+            var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+
+            return entity;
+
+        }
+
+        public IEnumerable GetPaymentByTableId(string tableId) // select * from ... wherer tableId=...
+        {
+            var tableName = "Payment";
+            var storeName = $"Proc_Get{tableName}ByTableId";
+
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add($"@tableId", tableId);
+
+            var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+            return entity;
+        }
+
+
+
+
+
+
+
+
         public bool CheckLogin(string username,string password)
         {
             var rowEffect = dbConnection.Query<Account>($"SELECT * FROM account where username='{username}' and password='{password}'").FirstOrDefault();
@@ -54,6 +88,12 @@ namespace SmartMeal
             var entity = dbConnection.Query<TEntity>(sql);
             return entity;
         }
+
+/*        public IEnumerable GetOrderByTableId(string orderId)
+        {
+            var sql = 
+        }*/
+
 
 
         public int Insert<M>(M entity)      // thêm mọi thứ vào database
