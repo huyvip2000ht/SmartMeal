@@ -32,43 +32,31 @@ namespace SmartMeal.Controllers
             return Ok(dbConnector.GetBy<Payment>("PaymentId", id));
         }
 
-        [HttpGet("table/{tableId}")]
+
+
+        List<dynamic> list = new List<dynamic>();
+        // POST api/<PaymentController>/Dishes
+        [HttpPost("Dishes")]
+        public IActionResult Post(string tableId,string voucherId)
+        {
+            var insert = dbConnector.InsertPayment(tableId,voucherId);
+            var dishes = new { Dishes = dbConnector.GetDishesByTableId(tableId) };
+            var payment = new { Payment = dbConnector.GetPaymentByTableId(tableId) };
+
+            list.Add(payment);
+            list.Add(dishes);
+
+            return Ok(list);
+        }
+        // GET api/Payment/table/1
+        [HttpGet("Table/{tableId}")]
         public IActionResult PostPayment(string tableId)
         {
             var payment = dbConnector.GetPaymentByTableId(tableId);
 
             return Ok(payment);
-
         }
 
-        // POST api/<PaymentController>
-        [HttpPost("dishes")]
-        public IActionResult Post(string tableId,string voucherId)
-        {
-            
-
-            var dishes = dbConnector.InsertPayment(tableId,voucherId);
-            var payment = dbConnector.GetPaymentByTableId(tableId);
-            var p = new
-            {
-                data = new
-                {
-                    name = "lame",
-                    age = 32
-                }
-            };
-            return p;
-            return Ok(dishes);
-
-        }
-/*        [HttpPost("payment")]
-        public IActionResult PostPayment(string tableId, string voucherId)
-        {
-            var payment = dbConnector.GetPaymentByTableId(tableId);
-
-            return Ok(payment);
-
-        }*/
 
 
         // PUT api/<PaymentController>/5

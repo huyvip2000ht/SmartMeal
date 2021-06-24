@@ -34,6 +34,15 @@ namespace SmartMeal.Controllers
             return Ok(dbConnector.GetBy<Account>("DishId", id));
         }
 
+        [HttpGet("Table/{tableId}")]
+        public IActionResult GetDishesByTableId(string tableId)
+        {
+            var dishes =  dbConnector.GetDishesByTableId(tableId) ;
+            return Ok(dishes);
+        }
+
+
+
         // POST api/<DishController>
         [HttpPost]
         public IActionResult Post(DishInsert dishInsert)
@@ -43,9 +52,6 @@ namespace SmartMeal.Controllers
             dish.DishTypeId = dishInsert.DishTypeId;
             dish.Price = dishInsert.Price;
             dish.Image = Base64ToImageAndSave(dishInsert.Base64ImageString);
-
-
-
             int affect = dbConnector.Insert<Dish>(dish);
             return Ok(affect);
            // return Ok(dish);

@@ -40,6 +40,17 @@ namespace SmartMeal
             return entity;
         }
 
+        public IEnumerable GetDishesByTableId(string tableId)
+        {
+            var storeName = $"Proc_GetDishesByTableId";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add($"tableId", tableId);
+   
+            var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+
+            return entity;
+        }
+
         public virtual IEnumerable InsertPayment(string tableId, string voucherId)
         {
             //var tableName = "payment";
