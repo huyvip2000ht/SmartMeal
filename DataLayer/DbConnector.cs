@@ -40,6 +40,8 @@ namespace SmartMeal
             return entity;
         }
 
+
+
         public IEnumerable GetDishesByTableId(string tableId)
         {
             var storeName = $"Proc_GetDishesByTableId";
@@ -100,10 +102,33 @@ namespace SmartMeal
             return entity;
         }
 
-/*        public IEnumerable GetOrderByTableId(string orderId)
+        /*        public IEnumerable GetOrderByTableId(string orderId)
+                {
+                    var sql = 
+                }*/
+
+
+        public int InsertOrderDetailByTableId(OrderDetailTable orderDetailTable)
         {
-            var sql = 
-        }*/
+            var storeName = $"Proc_InsertOrderDetailByTableId";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+
+
+            var properties = typeof(OrderDetailTable).GetProperties();
+
+            foreach (var property in properties)
+            {
+                var propertyName = property.Name;       // lấy tên biến
+                var propertyValue = property.GetValue(orderDetailTable);  // lấy giá trị
+                dynamicParameters.Add($"@{propertyName}", propertyValue);       // thêm tên biến và giá trị tương ứng
+            }
+
+            var affects = dbConnection.Execute(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+            return affects;
+        }
+
+
+
 
 
 

@@ -34,12 +34,34 @@ namespace SmartMeal.Controllers
 
         // POST api/<OrderDetailController>
         [HttpPost]
-        public IActionResult Post(OrderDetail orderDetail)
+        public IActionResult Post(List<OrderDetail> orderDetails)
         {
-            int affect = dbConnector.Insert<OrderDetail>(orderDetail);
-            return Ok(affect);
 
+            int sum = 0;
+           foreach(OrderDetail orderDetail in orderDetails)
+            {
+       
+                int affect = dbConnector.Insert<OrderDetail>(orderDetail);
+                sum += affect; 
+            }
 
+            return Ok(sum);
+        }
+
+        // POST api/<OrderDetailController>/Table
+        [HttpPost("Table")]
+        public IActionResult PostTable(List<OrderDetailTable> orderDetailTables)
+        {
+
+            int sum = 0;
+            foreach (OrderDetailTable orderDetailTable in orderDetailTables)
+            {
+
+                int affect = dbConnector.InsertOrderDetailByTableId(orderDetailTable);
+                sum += affect;
+            }
+
+            return Ok(sum);
         }
 
 

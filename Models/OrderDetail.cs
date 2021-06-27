@@ -11,7 +11,15 @@ namespace SmartMeal.Models
         public int DishId { get; set; }
         public int AccountId{ get; set; }
         public int QuantityOrder { get; set; }
-        public DateTime Timeorder { get; set; }
+        public DateTime TimeOrder { get; set; }
         public int ServeStatus { get; set; }
+    }
+    public class OrderDetailTable
+    {
+        public int TableId { get; set; }
+        public int DishId { get; set; }
+        public int AccountId { get; set; }
+        public int QuantityOrder { get; set; }
+
     }
 }
