@@ -23,6 +23,13 @@ namespace SmartMeal.Controllers
             return Ok(dbConnector.GetAllData<OrderDetail>());
 
         }
+        [HttpGet("isOrdered")]
+        public IActionResult GetAllDishIsOrdered()
+        {
+            return Ok(dbConnector.GetAllDishesIsCalled());
+        }
+
+
 
         // GET api/<OrderDetailController>/5
         [HttpGet("{id}")]
@@ -66,9 +73,16 @@ namespace SmartMeal.Controllers
 
 
         // PUT api/<OrderDetailController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("OrderId/{orderId}")]
+        public IActionResult Put(string orderId, [FromBody] string serveStatus)
         {
+            return Ok(dbConnector.Update<OrderDetail>("ServeStatus", serveStatus, "OrderId", orderId));
+        }
+
+        [HttpPut("OrderDetailId/{orderDetailId}")]
+        public IActionResult Putt(string orderDetailId, [FromBody] string serveStatus)
+        {
+            return Ok(dbConnector.Update<OrderDetail>("ServeStatus", serveStatus, "OrderDetailId", orderDetailId));
         }
 
         // DELETE api/<OrderDetailController>/5

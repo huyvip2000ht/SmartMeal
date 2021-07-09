@@ -60,9 +60,11 @@ namespace SmartMeal.Controllers
 
 
         // PUT api/<PaymentController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("isPaid/{paymentId}")]
+        public IActionResult Put(string paymentId)
         {
+            return Ok(dbConnector.Update<Table>("Status", "1", "paymentId", paymentId));
+
         }
 
         // DELETE api/<PaymentController>/5

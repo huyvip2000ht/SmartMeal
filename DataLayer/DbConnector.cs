@@ -12,7 +12,7 @@ namespace SmartMeal
 {
     public class DbConnector
     {
-        protected string connectionString = "Host=localhost;port=3307;Character Set=utf8;Database=restaurant;User Id=root;password=''"; //huy
+        protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password=''"; //huy
         //   protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password='12345678'"; //khoi
         //   protected string connectionString = "Database=restaurant;port=50154;Data Source=127.0.0.1;User Id=azure;Password=6#vWHD_$";
         protected IDbConnection dbConnection;
@@ -78,7 +78,16 @@ namespace SmartMeal
             return entity;
         }
 
+        public IEnumerable GetAllDishesIsCalled()
+        {
+            var storeName = $"Proc_GetAllDishesIsOrdered";
+            DynamicParameters dynamicParameters = new DynamicParameters();
 
+
+            var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+
+            return entity;
+        }
 
 
 
@@ -102,10 +111,7 @@ namespace SmartMeal
             return entity;
         }
 
-        /*        public IEnumerable GetOrderByTableId(string orderId)
-                {
-                    var sql = 
-                }*/
+
 
 
         public int InsertOrderDetailByTableId(OrderDetailTable orderDetailTable)

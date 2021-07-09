@@ -43,12 +43,10 @@ namespace SmartMeal.Controllers
 
         // PUT api/<TableController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(string id,[FromBody] Table table)
+        public IActionResult Put(string id,[FromBody] string status)
         {
 
-
-
-            return Ok(dbConnector.Update<Table>("status",table.Status.ToString(),"tableId", id));
+            return Ok(dbConnector.Update<Table>("status",status,"tableId", id));
         }
 
         // DELETE api/<TableController>/5
