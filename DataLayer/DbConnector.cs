@@ -99,6 +99,16 @@ namespace SmartMeal
 
             return entity;
         }
+        
+        public IEnumerable GetAllDishesDoneByTableId(string tableId)
+        {
+            var storeName = $"Proc_GetAllDishesDoneByTableId";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add($"TableId", tableId);
+            var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+
+            return entity;
+        }
 
 
 
