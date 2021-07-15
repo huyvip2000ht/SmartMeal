@@ -12,8 +12,8 @@ namespace SmartMeal
 {
     public class DbConnector
     {
-       // protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password=''"; //huy
-           protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password='12345678'"; //khoi
+        protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password=''"; //huy
+       //    protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password='12345678'"; //khoi
         //   protected string connectionString = "Database=restaurant;port=50154;Data Source=127.0.0.1;User Id=azure;Password=6#vWHD_$";
         protected IDbConnection dbConnection;
         public DbConnector()
@@ -65,6 +65,21 @@ namespace SmartMeal
             return entity;
 
         }
+
+        public virtual IEnumerable InsertPayment1(string tableId)
+        {
+            //var tableName = "payment";
+            var storeName = $"Proc_MakePayment1";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add($"tableId", tableId);
+           // dynamicParameters.Add($"voucherId", voucherId);
+            var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+
+            return entity;
+
+        }
+
+
 
         public IEnumerable GetPaymentByTableId(string tableId) // select * from ... wherer tableId=...
         {

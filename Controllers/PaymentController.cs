@@ -48,6 +48,25 @@ namespace SmartMeal.Controllers
 
             return Ok(list);
         }
+
+        [HttpPost]
+        public IActionResult AddPayment(string tableId)
+        {
+            //  var insert = dbConnector.InsertPayment(tableId, voucherId);
+            var insert = dbConnector.InsertPayment1(tableId);
+
+
+
+            var payment = new { Payment = dbConnector.GetPaymentByTableId(tableId) };
+            var dishes = new { Dishes = dbConnector.GetDishesByTableId(tableId) };
+
+            list.Add(payment);
+            list.Add(dishes);
+
+            return Ok(list);
+        }
+
+
         // GET api/Payment/table/1
         [HttpGet("Table/{tableId}")]
         public IActionResult PostPayment(string tableId)
