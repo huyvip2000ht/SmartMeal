@@ -8136,19 +8136,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\huyvi\\.nuget\\packages\\": {}
+    "C:\\Users\\zully\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\huyvi\\OneDrive\\taiii lieu\\Projects\\smarrtmeal\\SmartMeal.csproj",
+      "projectUniqueName": "C:\\Users\\zully\\source\\repos\\SmartMeal\\SmartMeal.csproj",
       "projectName": "SmartMeal",
-      "projectPath": "C:\\Users\\huyvi\\OneDrive\\taiii lieu\\Projects\\smarrtmeal\\SmartMeal.csproj",
-      "packagesPath": "C:\\Users\\huyvi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\huyvi\\OneDrive\\taiii lieu\\Projects\\smarrtmeal\\obj\\",
+      "projectPath": "C:\\Users\\zully\\source\\repos\\SmartMeal\\SmartMeal.csproj",
+      "packagesPath": "C:\\Users\\zully\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\zully\\source\\repos\\SmartMeal\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\huyvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zully\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8253,7 +8253,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

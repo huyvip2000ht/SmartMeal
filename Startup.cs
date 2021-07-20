@@ -61,6 +61,7 @@ namespace SmartMeal
                 endpoints.MapControllers();
                 endpoints.MapHub<AddFoodHub>("/api/addFoodHub");
                 endpoints.MapHub<ChangeTableStateHub>("/api/changeTableStateHub");
+                endpoints.MapHub<OrderFoodHub>("/api/orderFoodHub");
             });
         }
     }
