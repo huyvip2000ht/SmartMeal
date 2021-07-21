@@ -23,6 +23,11 @@ namespace SmartMeal.Controllers
             return Ok(dbConnector.GetAllData<Orders>());
 
         }
+        [HttpGet("isReady")]
+        public IActionResult GetIsReady()
+        {
+            return Ok(dbConnector.GetAllReadyOrders());
+        }
 
         // GET api/<OrdersController>/5
         [HttpGet("{id}")]

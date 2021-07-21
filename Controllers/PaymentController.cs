@@ -21,7 +21,7 @@ namespace SmartMeal.Controllers
         public IActionResult Get()
         {
 
-            return Ok(dbConnector.GetAllData<Payment>());
+            return Ok(dbConnector.GetAllPayments());
 
         }
 
@@ -49,11 +49,11 @@ namespace SmartMeal.Controllers
             return Ok(list);
         }
 
-        [HttpPost("{tableId}")]
-        public IActionResult AddPayment(string tableId)
+        [HttpPost("{tableId}/{cashierId}")]
+        public IActionResult AddPayment(string tableId, string cashierId)
         {
             //  var insert = dbConnector.InsertPayment(tableId, voucherId);
-            var insert = dbConnector.InsertPayment1(tableId);
+            var insert = dbConnector.InsertPayment1(tableId, cashierId);
 
 
 

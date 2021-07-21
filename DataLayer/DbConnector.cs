@@ -12,9 +12,9 @@ namespace SmartMeal
 {
     public class DbConnector
     {
-        protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password=''"; //huy
-                                                                                                                                        //    protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password='12345678'"; //khoi
-                                                                                                                                        //   protected string connectionString = "Database=restaurant;port=50154;Data Source=127.0.0.1;User Id=azure;Password=6#vWHD_$";
+        //protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password=''"; //huy
+            protected string connectionString = "Host=localhost;port=3306;Character Set=utf8;Database=restaurant;User Id=root;password='12345678'"; //khoi
+         //   protected string connectionString = "Database=restaurant;port=50154;Data Source=127.0.0.1;User Id=azure;Password=6#vWHD_$";
         protected IDbConnection dbConnection;
         public DbConnector()
         {
@@ -55,6 +55,14 @@ namespace SmartMeal
             var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
             return entity;
         }
+        public IEnumerable GetAllReadyOrders()
+        {
+            var storeName = $"Proc_GetAllReadyOrders";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+
+            var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+            return entity;
+        }
 
 
 
@@ -84,12 +92,13 @@ namespace SmartMeal
 
         }
 
-        public virtual IEnumerable InsertPayment1(string tableId)
+        public virtual IEnumerable InsertPayment1(string tableId, string cashierId)
         {
             //var tableName = "payment";
             var storeName = $"Proc_MakePayment1";
             DynamicParameters dynamicParameters = new DynamicParameters();
             dynamicParameters.Add($"tableId", tableId);
+            dynamicParameters.Add($"cashierId", cashierId);
             // dynamicParameters.Add($"voucherId", voucherId);
             var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
 
@@ -125,6 +134,16 @@ namespace SmartMeal
         public IEnumerable GetAllDishesReady()
         {
             var storeName = $"Proc_GetAllDishesReady";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+
+
+            var entity = dbConnection.Query(storeName, dynamicParameters, commandType: CommandType.StoredProcedure);
+
+            return entity;
+        }
+        public IEnumerable GetAllPayments()
+        {
+            var storeName = $"Proc_GetAllPayments";
             DynamicParameters dynamicParameters = new DynamicParameters();
 
 
