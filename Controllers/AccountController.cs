@@ -33,8 +33,11 @@ namespace SmartMeal.Controllers
             return Ok(dbConnector.GetBy<Account>("username",username));
         }
 
-         
-        
+
+
+
+
+
 
         // POST api/<ValuesController>
         [HttpPost]

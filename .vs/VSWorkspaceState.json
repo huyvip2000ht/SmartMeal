@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BusinessLayer",
+    "\\DataLayer"
   ],
-  "SelectedNode": "\\SmartMeal.sln",
   "PreviewInSolutionExplorer": false
 }

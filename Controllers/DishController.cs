@@ -41,6 +41,20 @@ namespace SmartMeal.Controllers
             return Ok(dishes);
         }
 
+        [HttpGet("AllDishes/{accountId}")]
+        public IActionResult GetAllDishes(string accountId)
+        {
+            return Ok(dbConnector.GetAllDishesByAccountId(accountId));
+        }
+        [HttpGet("AllDishesPaid")]
+        public IActionResult GetAllDishesPaid()
+        {
+            return Ok(dbConnector.GetAllDishesPaid());
+        }
+
+
+
+
 
 
         // POST api/<DishController>
