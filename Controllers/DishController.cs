@@ -41,10 +41,10 @@ namespace SmartMeal.Controllers
             return Ok(dishes);
         }
 
-        [HttpGet("AllDishes/{accountId}")]
-        public IActionResult GetAllDishes(string accountId)
+        [HttpGet("AllDishesCountByAccount")]
+        public IActionResult GetAllDishes()
         {
-            return Ok(dbConnector.GetAllDishesByAccountId(accountId));
+            return Ok(dbConnector.GetAllDishesByAccountId());
         }
         [HttpGet("AllDishesPaid")]
         public IActionResult GetAllDishesPaid()
