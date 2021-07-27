@@ -32,12 +32,18 @@ namespace SmartMeal.Controllers
             return Ok(dbConnector.GetBy<Payment>("PaymentId", id));
         }
 
+        [HttpGet("getByDate/{fromDate}/{toDate}")]
+        public IActionResult GetByDate(string fromDate, string toDate)
+        {
+            return Ok(dbConnector.GetPaymentsByDate(fromDate, toDate));
+        }
+
 
 
         List<dynamic> list = new List<dynamic>();
         // POST api/<PaymentController>/Dishes
         [HttpPost("Dishes")]
-        public IActionResult Post(string tableId,string voucherId)
+        public IActionResult Post(int tableId,string voucherId)
         {
             var insert = dbConnector.InsertPayment(tableId,voucherId);
             var dishes = new { Dishes = dbConnector.GetDishesByTableId(tableId) };
@@ -50,7 +56,7 @@ namespace SmartMeal.Controllers
         }
 
         [HttpPost("{tableId}/{cashierId}")]
-        public IActionResult AddPayment(string tableId, string cashierId)
+        public IActionResult AddPayment(int tableId, string cashierId)
         {
             //  var insert = dbConnector.InsertPayment(tableId, voucherId);
             var insert = dbConnector.InsertPayment1(tableId, cashierId);
@@ -69,7 +75,7 @@ namespace SmartMeal.Controllers
 
         // GET api/Payment/table/1
         [HttpGet("Table/{tableId}")]
-        public IActionResult PostPayment(string tableId)
+        public IActionResult PostPayment(int tableId)
         {
             var payment = dbConnector.GetPaymentByTableId(tableId);
 

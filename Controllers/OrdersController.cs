@@ -54,11 +54,17 @@ namespace SmartMeal.Controllers
 
         }
 
-        // PUT api/<OrdersController>/5
-        [HttpPut("isPaid/{orderId}")]
-        public IActionResult Put(string orderId)
+        [HttpPost("firstTime/{tableId}")]
+        public IActionResult PostFirstTime(int tableId)
         {
-            return Ok(dbConnector.Update<Orders>("Status", "1", "orderId", orderId));
+            return Ok(dbConnector.OrderFirstTime(tableId));
+        }
+
+        // PUT api/<OrdersController>/5
+        [HttpPost("isPaid/{orderId}/{tableId}/{cashierId}")]
+        public IActionResult Post(int orderId, int tableId, int cashierId)
+        {
+            return Ok(dbConnector.OrderPaidDone(orderId, tableId, cashierId));
 
         }
 

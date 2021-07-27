@@ -35,7 +35,7 @@ namespace SmartMeal.Controllers
         }
 
         [HttpGet("Table/{tableId}")]
-        public IActionResult GetDishesByTableId(string tableId)
+        public IActionResult GetDishesByTableId(int tableId)
         {
             var dishes =  dbConnector.GetDishesByTableId(tableId) ;
             return Ok(dishes);

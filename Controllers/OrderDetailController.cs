@@ -36,10 +36,10 @@ namespace SmartMeal.Controllers
             return Ok(dbConnector.GetAllDishesReady());
         }
 
-        [HttpGet("GetDishesDone/{tableId}")]
-        public IActionResult GetDishesDoneByTableId(string tableId)
+        [HttpGet("GetDishesDone/{orderId}")]
+        public IActionResult GetDishesDoneByOrderId(int orderId)
         {
-            return Ok(dbConnector.GetAllDishesDoneByTableId(tableId));
+            return Ok(dbConnector.GetAllDishesDoneByOrderId(orderId));
         }
 
 
@@ -80,10 +80,27 @@ namespace SmartMeal.Controllers
                 int affect = dbConnector.InsertOrderDetailByTableId(orderDetailTable);
                 sum += affect;
             }
+            
 
             return Ok(sum);
         }
 
+        [HttpPost("TableFirstTime/{tableId}")]
+        public IActionResult PostTableFirstTime(List<OrderDetailTable> orderDetailTables, int tableId)
+        {
+
+            int sum = 0;
+            dbConnector.OrderFirstTime(tableId);
+            foreach (OrderDetailTable orderDetailTable in orderDetailTables)
+            {
+
+                int affect = dbConnector.InsertOrderDetailByTableId(orderDetailTable);
+                sum += affect;
+            }
+
+
+            return Ok(sum);
+        }
 
         // PUT api/<OrderDetailController>/5
         [HttpPut("OrderId/{orderId}")]
